@@ -1,0 +1,75 @@
+{
+  "name": "buddycoder",
+  "displayName": "BuddyCoder",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "buddycoder.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "buddycoder.openChat",
+        "title": "Open BuddyCoder Chat"
+      }
+    ],
+    "configuration": {
+      "title": "BuddyCoder",
+      "properties": {
+        "buddycoder.aiProvider": {
+          "type": "string",
+          "default": "openai",
+          "enum": [
+            "openai",
+            "anthropic",
+            "deepseek"
+          ],
+          "description": "Select the AI provider to use"
+        },
+        "buddycoder.openai.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for OpenAI"
+        },
+        "buddycoder.anthropic.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for Anthropic"
+        },
+        "buddycoder.deepseek.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for Deepseek"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.98.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
